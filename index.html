@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Camera Test</title>
+</head>
+<body>
+<h2>Camera Demo</h2>
+<button onclick="requestCamera()">Allow Camera</button>
+<video id="camera" width="320" height="240" autoplay></video>
+<script>
+let stream;
+function requestCamera() {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(s => {
+      stream = s;
+      document.getElementById("camera").srcObject = stream;
+    })
+    .catch(() => alert("Camera permission denied"));
+}
+</script>
+</body>
+</html>
